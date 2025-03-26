@@ -34,3 +34,4 @@ int main() {
     cout << "Area:  " << square (a, b, c) << endl;
     cout << "Checking for mirroring (1 - true; 0 - false):  " <<  mir(a,b,c)  << endl;
 }
+// ya ochen userdniy uchenik
