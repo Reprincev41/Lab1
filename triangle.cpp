@@ -9,7 +9,7 @@ double perimetr(double a, double b, double c) { // Объявляем функц
     return a + b + c; // Возвращаем сумму трех сторон, что является периметром.
 }
 
-double square(double a, double b, double c) { // Объявляем функцию square, принимающую три аргумента double и возвращающую double.
+double square((double a, double b, double c)) { // Объявляем функцию square, принимающую три аргумента double и возвращающую double.
     double halfper = (a + b + c) / 2; // Вычисляем полупериметр треугольника.
     return sqrt(halfper * (halfper - a) * (halfper - b) * (halfper - c)); // Вычисляем площадь по формуле Герона и возвращаем результат.
 }
