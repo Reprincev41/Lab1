@@ -39,6 +39,11 @@ double getValidSide() { // Объявляем функцию getValidSide, не 
     }
 }
 
+
+bool isTriangleValid(double a, double b, double c) {
+    return (a + b > c) && (a + c > b) && (b + c > a);
+}
+
 int main() { // Главная функция программы.
     double a, b, c; // Объявляем переменные a, b, c типа double для хранения сторон треугольника.
 
@@ -47,9 +52,12 @@ int main() { // Главная функция программы.
     c = getValidSide(); // Вызываем функцию getValidSide для получения третьей стороны и сохраняем результат в переменной c.
 
 
-    cout << "Perimeter:  " << perimetr(a, b, c) << endl; // Вычисляем и выводим периметр треугольника.
-    cout << "Area:  " << square(a, b, c) << endl; // Вычисляем и выводим площадь треугольника.
-    cout << "Checking for mirroring (1 - true; 0 - false):  " << mir(a, b, c) << endl; // Вычисляем и выводим результат проверки на равнобедренность.
-
+    if (isTriangleValid(a, b, c)) {
+        cout << "Perimeter:  " << perimetr(a, b, c) << endl;
+        cout << "Area:  " << square(a, b, c) << endl;
+        cout << "Checking for mirroring (1 - true; 0 - false):  " << mir(a, b, c) << endl;
+    } else {
+        cout << "Треугольник с такими сторонами не существует." << endl;
+    }
     return 0; // Возвращаем 0, сигнализируя об успешном завершении программы.
 }
