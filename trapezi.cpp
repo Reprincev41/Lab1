@@ -2,7 +2,7 @@
 #include <cmath>
 
 using namespace std;
-
+//Calculations
 double ploshad(double a, double b, double c, double d){
     double midlane = (a+b)/2;
     return midlane * sqrt((pow(c,2)-(pow((pow(a-b,2)+pow(c,2)-pow(d,2))/(2*(a-b)),2))));
