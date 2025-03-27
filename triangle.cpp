@@ -5,7 +5,7 @@
 
 using namespace std; // Используем пространство имен std, чтобы не писать std:: перед элементами, например, cout, cin.
 
-double perimetr((double a, double b, double c)) { // Объявляем функцию perimetr, принимающую три аргумента double и возвращающую double.
+double perimetr(double a, double b, double c) { // Объявляем функцию perimetr, принимающую три аргумента double и возвращающую double.
     return a + b + c; // Возвращаем сумму трех сторон, что является периметром.
 }
 
@@ -53,3 +53,4 @@ int main() { // Главная функция программы.
 
     return 0; // Возвращаем 0, сигнализируя об успешном завершении программы.
 }
+//resent push into main
