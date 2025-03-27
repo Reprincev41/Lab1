@@ -1,37 +1,55 @@
-#include <iostream>
-#include <cmath>
-using namespace std;
+#include <iostream> // Подключаем библиотеку iostream для ввода/вывода данных.
+#include <cmath> // Подключаем библиотеку cmath для математических функций, таких как sqrt.
+#include <limits> // Подключаем библиотеку limits для доступа к numeric_limits.
+#include <sstream> // Подключаем библиотеку sstream для работы с потоками строк (stringstream).
 
-double perimetr(double a, double b, double c) {
-    return a + b + c;
+using namespace std; // Используем пространство имен std, чтобы не писать std:: перед элементами, например, cout, cin.
+
+double perimetr(double a, double b, double c) { // Объявляем функцию perimetr, принимающую три аргумента double и возвращающую double.
+    return a + b + c; // Возвращаем сумму трех сторон, что является периметром.
 }
 
-double square(double a, double b, double c) {
-    double halfper = (a + b + c) / 2;
-    return sqrt(halfper * (halfper - a) * (halfper -b) * (halfper - c));
+double square(double a, double b, double c) { // Объявляем функцию square, принимающую три аргумента double и возвращающую double.
+    double halfper = (a + b + c) / 2; // Вычисляем полупериметр треугольника.
+    return sqrt(halfper * (halfper - a) * (halfper - b) * (halfper - c)); // Вычисляем площадь по формуле Герона и возвращаем результат.
 }
 
- double mir(double a, double b, double c) {
-    return ( a==b || b == c || c == a);
-} 
+double mir(double a, double b, double c) { // Объявляем функцию mir, принимающую три аргумента double и возвращающую double.
+    return (a == b || b == c || c == a); // Возвращаем true (1.0) если хотя бы две стороны равны, иначе возвращаем false (0.0).
+}
 
-int main() {
-    double a, b, c;
-    while (true) {
-        cout << "Enter the 3 sides of treugolnik:)";
-        cin >> a >> b >> c;
+double getValidSide() { // Объявляем функцию getValidSide, не принимающую аргументов и возвращающую double.
+    double side; // Объявляем переменную side типа double для хранения введенной стороны.
+    string input; // Объявляем переменную input типа string для хранения введенной строки.
 
-        // Проверка на нулевые или отрицательные значения
-        if (a <= 0 || b <= 0 || c<=0) {
-            cout << "Невозможные значения! Попробуйте ещё раз." << endl;
-            continue; // Возвращаемся к вводу значений.
+    while (true) { // Начинаем бесконечный цикл, который будет продолжаться до тех пор, пока не будет введен корректное значение.
+        cout << "Введите сторону треугольника (число): "; // Выводим приглашение пользователю ввести сторону треугольника.
+        getline(cin, input); // Считываем строку, введенную пользователем, включая пробелы, и сохраняем ее в переменной input.
+
+        stringstream ss(input); // Создаем объект ss типа stringstream и инициализируем его введенной строкой input.
+        if (ss >> side && ss.eof()) { // Проверяем, удалось ли извлечь число из строки и достигнут ли конец строки.
+            if (side > 0) { // Проверяем, является ли сторона положительной.
+                return side; // Если сторона положительная, возвращаем ее значение.
+            } else { // Если сторона не положительная.
+                cout << "Сторона должна быть положительной. Попробуйте ещё раз." << endl; // Выводим сообщение об ошибке.
+            }
+        } else { // Если ввод некорректен (не число).
+            cout << "Некорректный ввод. Пожалуйста, введите число." << endl; // Выводим сообщение об ошибке.
         }
-        break;
     }
-
-
-    cout << "Perimeter:  " << perimetr(a, b, c) << endl;
-    cout << "Area:  " << square (a, b, c) << endl;
-    cout << "Checking for mirroring (1 - true; 0 - false):  " <<  mir(a,b,c)  << endl;
 }
-// ya ochen userdniy uchenik
+
+int main() { // Главная функция программы.
+    double a, b, c; // Объявляем переменные a, b, c типа double для хранения сторон треугольника.
+
+    a = getValidSide(); // Вызываем функцию getValidSide для получения первой стороны и сохраняем результат в переменной a.
+    b = getValidSide(); // Вызываем функцию getValidSide для получения второй стороны и сохраняем результат в переменной b.
+    c = getValidSide(); // Вызываем функцию getValidSide для получения третьей стороны и сохраняем результат в переменной c.
+
+
+    cout << "Perimeter:  " << perimetr(a, b, c) << endl; // Вычисляем и выводим периметр треугольника.
+    cout << "Area:  " << square(a, b, c) << endl; // Вычисляем и выводим площадь треугольника.
+    cout << "Checking for mirroring (1 - true; 0 - false):  " << mir(a, b, c) << endl; // Вычисляем и выводим результат проверки на равнобедренность.
+
+    return 0; // Возвращаем 0, сигнализируя об успешном завершении программы.
+}
