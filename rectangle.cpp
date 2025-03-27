@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath> // usage of sqrt111
+#include <cmath> // usage of sqrt and various mathematics
 
 void rectangle() {
     double length, height;
