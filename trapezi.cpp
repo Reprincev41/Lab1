@@ -29,9 +29,16 @@ int main(){
     cin >> d;
     cout << "" << endl;
 
-    cout << "Площадь = " << ploshad (a,b,c,d) << endl;
-    cout << "" << endl;
-    cout << "Периметр = " << perimetr(a,b,c,d) << endl;
-    cout << "" << endl;
-    cout << "Центральная линия = " << midlane(a,b) << endl;
+    if ((a < 0 || b < 0 || c < 0 || d < 0) || ((c) <= ((a+b)/2)) || ((d) <= ((a+b)/2))){
+        cout << "Error" << endl;
+    }
+
+    else {
+        cout << "Площадь = " << ploshad (a,b,c,d) << endl;
+        cout << "" << endl;
+        cout << "Периметр = " << perimetr(a,b,c,d) << endl;
+        cout << "" << endl;
+        cout << "Центральная линия = " << midlane(a,b) << endl;
+    }
+    
 }
